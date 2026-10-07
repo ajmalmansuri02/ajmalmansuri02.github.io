@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ajmal Mansuri: full-stack engineer moving into AI engineering. Python, Django, FastAPI, React, Google Cloud, RAG and agents.">
+<title>Ajmal Mansuri · Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column with a wide hero split (bio | live agent trace); sections are labelled like log spans. */
+:root{
+  --bg:#f2f4f6;
+  --surface:#ffffff;
+  --sunk:#e7ebef;
+  --ink:#121b24;
+  --muted:#56636f;
+  --line:#d3d9df;
+  --accent:#2747c9;
+  --accent-soft:#e2e7fb;
+  --ok:#17795a;
+  --warn:#a35d00;
+  --tool:#7a3fb8;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius:10px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e141a; --surface:#151d25; --sunk:#1b252f; --ink:#e6ebf0; --muted:#94a2af; --line:#283440;
+    --accent:#8ea4ff; --accent-soft:#1e2a52; --ok:#4fc79c; --warn:#e6a54a; --tool:#c39af0; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e141a; --surface:#151d25; --sunk:#1b252f; --ink:#e6ebf0; --muted:#94a2af; --line:#283440;
+  --accent:#8ea4ff; --accent-soft:#1e2a52; --ok:#4fc79c; --warn:#e6a54a; --tool:#c39af0; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);margin:0}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+p{margin:0}
+.mono{font-family:var(--mono)}
+.ph{border-bottom:1px dashed var(--warn);color:var(--warn)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:20px;min-height:56px;flex-wrap:wrap;padding-block:6px}
+.brand{font:700 18px var(--display);color:var(--ink);text-decoration:none;margin-right:auto}
+.brand span{color:var(--accent)}
+.nav a.l{color:var(--muted);text-decoration:none;font-size:14px}
+.nav a.l:hover{color:var(--ink)}
+.theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;font:500 12px var(--mono);padding:4px 10px;cursor:pointer}
+@media (max-width:640px){.nav a.l{display:none}}
+
+/* section frame */
+section{padding-block:clamp(48px,8vw,88px);border-bottom:1px solid var(--line)}
+.span{font:500 12px var(--mono);color:var(--muted);letter-spacing:.04em;display:flex;gap:10px;align-items:center;margin-bottom:14px}
+.span b{color:var(--accent);font-weight:500}
+.span::after{content:"";flex:1;height:1px;background:var(--line)}
+h2{font-size:clamp(28px,4vw,40px);font-weight:700;margin-bottom:12px;letter-spacing:-.01em}
+.lede{color:var(--muted);max-width:62ch;margin-bottom:32px}
+
+/* hero */
+.hero{padding-block:clamp(40px,7vw,80px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,5vw,56px);align-items:start}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+.status{display:inline-flex;align-items:center;gap:8px;font:500 12px var(--mono);color:var(--ok);border:1px solid color-mix(in srgb,var(--ok) 40%,transparent);border-radius:999px;padding:4px 12px;margin-bottom:22px}
+.status i{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 25%,transparent)}
+.hero h1{font-size:clamp(40px,6.4vw,72px);font-weight:800;letter-spacing:-.025em;margin-bottom:14px}
+.role{font:500 clamp(17px,2vw,20px)/1.4 var(--display);margin-bottom:20px}
+.role .arrow{color:var(--accent)}
+.bio{color:var(--muted);max-width:56ch;margin-bottom:26px}
+.bio strong{color:var(--ink);font-weight:600}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:500 14px var(--body);padding:9px 16px;border-radius:8px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn:hover{border-color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:20px 24px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
+.stats div{min-width:0}
+.stats b{display:block;font:700 26px var(--display);font-variant-numeric:tabular-nums}
+.stats span{font-size:13px;color:var(--muted)}
+
+/* trace panel */
+.trace{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;min-width:0}
+.trace-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font:500 12px var(--mono);color:var(--muted);flex-wrap:wrap}
+.trace-h select,.trace-h button{font:500 12px var(--mono);background:var(--sunk);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:4px 8px;cursor:pointer}
+.trace-ctl{display:flex;gap:6px;flex-wrap:wrap}
+.trace ol{list-style:none;margin:0;padding:6px 0}
+.trace li{display:grid;grid-template-columns:78px minmax(0,1fr);gap:10px;padding:8px 14px;font-size:14px;transition:opacity .3s}
+.trace li.pending{opacity:.25}
+.kind{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.06em;padding-top:2px}
+.k-user{color:var(--muted)} .k-plan{color:var(--accent)} .k-tool{color:var(--tool)} .k-obs{color:var(--warn)} .k-answer{color:var(--ok)}
+.trace pre{margin:4px 0 0;font:12.5px/1.5 var(--mono);background:var(--sunk);border-radius:6px;padding:8px 10px;white-space:pre-wrap;overflow-wrap:anywhere}
+.trace-f{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--line);font:12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* now */
+.now{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.now div{background:var(--surface);padding:22px 20px;min-width:0}
+.now h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.now p{font-size:14.5px;color:var(--muted)}
+.now .tag{font:500 11px var(--mono);color:var(--accent);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:10px}
+
+/* projects */
+.projects{display:grid;gap:18px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(20px,3vw,30px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,260px);gap:12px 32px}
+@media (max-width:760px){.proj{grid-template-columns:1fr}}
+.proj .meta{font:500 12px var(--mono);color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.pill{font:500 11px var(--mono);padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.pill.ai{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);background:var(--accent-soft)}
+.pill.live{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
+.proj h3{font-size:clamp(22px,2.6vw,28px);font-weight:700;margin-bottom:10px}
+.proj .sum{color:var(--muted);max-width:64ch}
+.impact{list-style:none;margin:0;padding:0;display:grid;gap:10px;align-content:start}
+.impact li{border-left:2px solid var(--accent);padding-left:12px;font-size:14px;min-width:0}
+.impact b{display:block;font:700 20px var(--display);font-variant-numeric:tabular-nums}
+.proj details{grid-column:1/-1;border-top:1px solid var(--line);padding-top:12px;margin-top:6px}
+.proj summary{cursor:pointer;font:500 13px var(--mono);color:var(--accent);list-style:none}
+.proj summary::-webkit-details-marker{display:none}
+.proj summary::before{content:"+ "}
+.proj details[open] summary::before{content:"− "}
+.proj details ul{margin:14px 0 0;padding-left:18px;display:grid;gap:6px;font-size:15px;max-width:80ch}
+.stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.stack span{font:12px var(--mono);background:var(--sunk);border-radius:5px;padding:2px 8px}
+
+/* demos */
+.demos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:860px){.demos{grid-template-columns:1fr}}
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.demo h3{font-size:21px;font-weight:700}
+.demo .note{font-size:13px;color:var(--muted)}
+.demo label{font:500 12px var(--mono);color:var(--muted);display:block;margin-bottom:6px}
+.demo input,.demo textarea{width:100%;font:15px var(--body);color:var(--ink);background:var(--sunk);border:1px solid var(--line);border-radius:8px;padding:9px 12px}
+.demo textarea{font:14px/1.5 var(--mono);min-height:84px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{font:12.5px var(--body);background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:4px 10px;cursor:pointer}
+.chips button:hover{color:var(--ink);border-color:var(--accent)}
+.hits{display:grid;gap:8px}
+.hit{display:grid;grid-template-columns:28px minmax(0,1fr) 54px;gap:10px;align-items:center;font-size:14px}
+.hit .n{font:500 12px var(--mono);color:var(--muted)}
+.hit .bar{height:6px;background:var(--sunk);border-radius:3px;overflow:hidden;margin-top:5px}
+.hit .bar i{display:block;height:100%;background:var(--accent);transition:width .4s}
+.hit .s{font:12px var(--mono);text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.hit.top .s{color:var(--accent)}
+.answer{background:var(--sunk);border-radius:8px;padding:12px 14px;font-size:14.5px}
+.answer .cite{font:500 11px var(--mono);color:var(--accent);vertical-align:super}
+.toks{display:flex;flex-wrap:wrap;gap:3px;font:13.5px/1.9 var(--mono);background:var(--sunk);border-radius:8px;padding:10px;min-height:60px}
+.toks span{border-radius:3px;padding:0 1px;white-space:pre}
+.tokstats{display:flex;gap:22px;flex-wrap:wrap;font:13px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.tokstats b{color:var(--ink);font-weight:500}
+
+/* timeline */
+.timeline{list-style:none;margin:0;padding:0;display:grid}
+.timeline li{display:grid;grid-template-columns:170px minmax(0,1fr);gap:24px;padding-block:22px;border-top:1px solid var(--line)}
+.timeline li:first-child{border-top:0}
+@media (max-width:640px){.timeline li{grid-template-columns:1fr;gap:6px}}
+.when{font:500 13px var(--mono);color:var(--muted);padding-top:4px}
+.timeline h3{font-size:20px;font-weight:700}
+.timeline .org{color:var(--accent);font-weight:500;margin:2px 0 8px;font-size:15px}
+.timeline p{color:var(--muted);max-width:68ch;font-size:15px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px 40px}
+.skills div{min-width:0}
+.skills h3{font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.skills ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:15px}
+.skills li.b::after{content:" · building";font:11px var(--mono);color:var(--warn)}
+.legend{font:12px var(--mono);color:var(--muted);margin-top:28px}
+.legend span{color:var(--warn)}
+
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end}
+@media (max-width:760px){.contact{grid-template-columns:1fr}}
+.contact h2{font-size:clamp(32px,5vw,52px);font-weight:800}
+.cards{display:grid;gap:10px}
+.cline{display:flex;justify-content:space-between;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 16px;min-width:0}
+.cline span{font:12px var(--mono);color:var(--muted)}
+.cline a,.cline code{font:500 14.5px var(--mono);overflow-wrap:anywhere;color:var(--ink);text-decoration:none}
+.cline a:hover{color:var(--accent)}
+footer{padding-block:28px;font:12px var(--mono);color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">ajmal<span>.</span>dev</a>
+    <a class="l" href="#work">Work</a>
+    <a class="l" href="#demos">Demos</a>
+    <a class="l" href="#experience">Experience</a>
+    <a class="l" href="#skills">Skills</a>
+    <a class="l" href="#contact">Contact</a>
+    <button class="theme" id="themeBtn" type="button" aria-label="Toggle colour theme">theme: auto</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="status"><i></i>Open to AI Engineer roles</span>
+      <h1>Ajmal Mansuri</h1>
+      <p class="role">Full-stack engineer <span class="arrow">→</span> AI engineer</p>
+      <p class="bio">I build backend-heavy platforms across <strong>healthtech, fintech and bioinformatics</strong>: API architecture, payment systems, data pipelines and ML-backed services on <strong>Google Cloud</strong>. Right now I lead backend engineering for CostCures, and I'm building <strong>SupportPilot</strong>, an AI support agent with RAG, tool calling and evals.</p>
+      <div class="links">
+        <a class="btn primary" href="#work">See my work</a>
+        <a class="btn" href="https://github.com/ajmalmansuri02" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="#contact">LinkedIn</a>
+        <a class="btn" href="#contact">Résumé</a>
+      </div>
+      <div class="stats">
+        <div><b>5+</b><span>years shipping</span></div>
+        <div><b>500K+</b><span>users on a lending platform</span></div>
+        <div><b>10+</b><span>engineers led</span></div>
+        <div><b>GCP</b><span>Cloud Run · Pub/Sub · Vertex AI</span></div>
+      </div>
+    </div>
+
+    <aside class="trace" aria-label="Example agent trace from SupportPilot">
+      <div class="trace-h">
+        <span>supportpilot · agent trace</span>
+        <div class="trace-ctl">
+          <label for="scenario" class="mono" style="position:absolute;left:-9999px">Scenario</label>
+          <select id="scenario"></select>
+          <button id="replay" type="button">▶ replay</button>
+        </div>
+      </div>
+      <ol id="traceList"></ol>
+      <div class="trace-f"><span id="traceMeta">—</span><span>illustrative trace</span></div>
+    </aside>
+  </div>
+</header>
+
+<main>
+<section id="now">
+  <div class="wrap">
+    <div class="span"><b>span</b> now · what I'm focused on</div>
+    <h2>Where my attention is</h2>
+    <p class="lede">Five years of backend and cloud work are a solid base for AI engineering. These are the four things I'm putting hours into this quarter.</p>
+    <div class="now">
+      <div><span class="tag">Build</span><h3>SupportPilot</h3><p>An AI customer-support agent, built in public over 12 weeks: FastAPI, Next.js, LangGraph, pgvector and an MCP ticketing server.</p></div>
+      <div><span class="tag">Measure</span><h3>Eval-driven development</h3><p>Golden datasets, LLM-as-judge and retrieval metrics in CI, so a prompt change has to prove it helped before it ships.</p></div>
+      <div><span class="tag">Connect</span><h3>Agents and MCP</h3><p>Tool calling, routing and Model Context Protocol servers. I already use MCP connectors with Claude Code in my daily work.</p></div>
+      <div><span class="tag">Ship</span><h3>Production on GCP</h3><p>Cost, latency, guardrails and tracing. Taking what I know about Cloud Run and Pub/Sub into LLM serving.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="span"><b>span</b> work · selected projects</div>
+    <h2>Selected work</h2>
+    <p class="lede">Production systems I've built or led, plus the AI work I'm doing now. Open any project for the details.</p>
+
+    <div class="projects">
+      <article class="proj">
+        <div>
+          <div class="meta"><span>Evonence</span><span>·</span><span>Current</span><span class="pill">Healthtech</span></div>
+          <h3>CostCures: healthcare price transparency</h3>
+          <p class="sum">I lead backend engineering for a platform where patients compare real prices for medical services and providers enrol, publish pricing and get paid. I own the Django and PostgreSQL API, payments, data pipelines and the path from dev to production.</p>
+        </div>
+        <ul class="impact">
+          <li><b>OOM → 0</b>Bulk pricing uploads moved from Pub/Sub workers to Cloud Run Jobs</li>
+          <li><b>238</b>scraped facilities verified against Google Places</li>
+          <li><b>Dev → UAT → Prod</b>Environment promotion and go-live checklist</li>
+        </ul>
+        <details>
+          <summary>Show the details</summary>
+          <ul>
+            <li>Built the payments layer on Authorize.Net: saved cards, auto-renewing subscriptions, a custom product and pricing catalog, and settlement reconciliation for pending transactions.</li>
+            <li>Integrated TaxJar for sales-tax calculation across states.</li>
+            <li>Re-architected the hospital pricing bulk-upload pipeline from Pub/Sub consumers to Cloud Run Jobs, which removed out-of-memory failures on large files.</li>
+            <li>Led a security hardening pass: moved payment admin endpoints to role-based access control, closed a cluster of legacy IDOR issues and gated admin account creation.</li>
+            <li>Built provider enrolment, Firebase authentication flows (email link, Google sign-in for invited users) and bulk data cleanup such as US ZIP code normalisation.</li>
+            <li>Built a facility data pipeline that scrapes provider listings and verifies addresses and websites with the Google Places API.</li>
+          </ul>
+          <div class="stack"><span>Python</span><span>Django</span><span>PostgreSQL</span><span>Cloud Run Jobs</span><span>Pub/Sub</span><span>Cloud SQL</span><span>Secret Manager</span><span>Firebase Auth</span><span>Authorize.Net</span><span>TaxJar</span><span>React</span></div>
+        </details>
+      </article>
+
+      <article class="proj">
+        <div>
+          <div class="meta"><span>Personal</span><span>·</span><span>2026</span><span class="pill ai">AI</span><span class="pill live">In progress</span></div>
+          <h3>SupportPilot: AI customer-support agent</h3>
+          <p class="sum">A support agent that answers from a knowledge base with citations, looks up orders and opens tickets through tools, and hands off to a human when it isn't sure. Built phase by phase with evals in CI from week 3.</p>
+        </div>
+        <ul class="impact">
+          <li><b>RAG</b>pgvector retrieval with cited answers</li>
+          <li><b>Agents</b>LangGraph tool calling and an MCP ticket server</li>
+          <li><b>Evals</b>Retrieval and answer-quality checks on every PR</li>
+        </ul>
+        <details>
+          <summary>Show the details</summary>
+          <ul>
+            <li>Phase 1 shipped: LLM backend with streaming chat UI, structured output and conversation memory.</li>
+            <li>Next: chunking and embeddings, a golden eval set, LangGraph agent with order-lookup and ticket tools, Langfuse tracing, guardrails and a deployed demo.</li>
+            <li>Runs fully local with Ollama (qwen2.5, nomic-embed-text), with Gemini as an optional hosted model.</li>
+          </ul>
+          <div class="stack"><span>FastAPI</span><span>Next.js</span><span>LangGraph</span><span>pgvector</span><span>MCP</span><span>Ollama</span><span>Gemini</span><span>Langfuse</span><span>Docker</span></div>
+          <p style="margin-top:14px"><a href="https://github.com/ajmalmansuri02/supportpilot" target="_blank" rel="noopener">github.com/ajmalmansuri02/supportpilot</a></p>
+        </details>
+      </article>
+
+      <article class="proj">
+        <div>
+          <div class="meta"><span>Evonence</span><span>·</span><span>2025</span><span class="pill ai">ML platform</span><span class="pill">Bioinformatics</span></div>
+          <h3>Genomics pathogen-surveillance platform</h3>
+          <p class="sum">Backend and workflow-orchestration engineer on a SaaS platform whose pipelines run ML-based antimicrobial-resistance prediction on genome sequence data.</p>
+        </div>
+        <ul class="impact">
+          <li><b>Django + Node.js</b>API plus a workflow-manager microservice</li>
+          <li><b>GKE</b>Containerised Snakemake pipelines in production</li>
+        </ul>
+        <details>
+          <summary>Show the details</summary>
+          <ul>
+            <li>Built API endpoints in Django and a Node.js workflow-manager service that launches, tracks and reports on bioinformatics pipeline runs.</li>
+            <li>Orchestrated Snakemake workflows packaged with Docker and Singularity and deployed on Google Kubernetes Engine.</li>
+            <li>Connected sequencing uploads to ML resistance-prediction results that scientists review in the product.</li>
+          </ul>
+          <div class="stack"><span>Django</span><span>Node.js</span><span>Snakemake</span><span>Docker</span><span>Singularity</span><span>GKE</span></div>
+        </details>
+      </article>
+
+      <article class="proj">
+        <div>
+          <div class="meta"><span>Evonence</span><span>·</span><span>2025</span><span class="pill ai">GenAI</span></div>
+          <h3>GenAI code review in CI/CD</h3>
+          <p class="sum">Wired Google's Gemini-based DevAI review tool into the CostCures pipeline, so every change gets an automated security, performance and quality review before a human looks at it.</p>
+        </div>
+        <ul class="impact">
+          <li><b>Every PR</b>reviewed by Vertex AI / Gemini</li>
+        </ul>
+        <details>
+          <summary>Show the details</summary>
+          <ul>
+            <li>Added a CI workflow that runs the DevAI CLI on each change and posts findings back to the pull request.</li>
+            <li>Tuned what the review covers (security, performance, code quality) for a Django codebase.</li>
+          </ul>
+          <div class="stack"><span>Vertex AI</span><span>Gemini</span><span>GitHub Actions</span><span>Cloud Build</span></div>
+        </details>
+      </article>
+
+      <article class="proj">
+        <div>
+          <div class="meta"><span class="ph">Fatakpay</span><span>·</span><span class="ph">[years]</span><span class="pill">Fintech</span><span class="pill ai">Computer vision</span></div>
+          <h3>Digital lending platform</h3>
+          <p class="sum">Led a cross-functional team building loan origination, CRM and underwriting integrations, with real-time OCR and liveness face detection for KYC.</p>
+        </div>
+        <ul class="impact">
+          <li><b>500K+</b>users served</li>
+          <li><b>10+</b>engineers led across functions</li>
+        </ul>
+        <details>
+          <summary>Show the details</summary>
+          <ul>
+            <li>Loan origination and CRM flows, plus integrations with underwriting and credit partners.</li>
+            <li>Real-time document OCR and liveness face detection in the KYC flow.</li>
+          </ul>
+          <div class="stack"><span>Python</span><span>Node.js</span><span>React</span><span>PostgreSQL</span><span>OCR</span><span>Face liveness</span></div>
+        </details>
+      </article>
+
+      <article class="proj">
+        <div>
+          <div class="meta"><span class="ph">[company]</span><span>·</span><span class="ph">[years]</span><span class="pill">SaaS</span></div>
+          <h3>Subscription SaaS products</h3>
+          <p class="sum">Built payment-driven SaaS products end to end, from billing and subscriptions to the customer dashboards.</p>
+        </div>
+        <ul class="impact">
+          <li><b>2,000+</b>paying subscribers</li>
+        </ul>
+        <details>
+          <summary>Show the details</summary>
+          <ul>
+            <li>Also contributed to a visual-similarity search service using CLIP and ResNet50 embeddings with Pinecone vector search for product recommendations.</li>
+          </ul>
+          <div class="stack"><span>Python</span><span>React</span><span>Payments</span><span>Pinecone</span><span>CLIP</span></div>
+        </details>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="demos">
+  <div class="wrap">
+    <div class="span"><b>span</b> demos · try it in the browser</div>
+    <h2>Small demos of big ideas</h2>
+    <p class="lede">Two pieces of the LLM stack you can poke at right here. Both run entirely in your browser with simplified maths, so they show the mechanics without calling a model.</p>
+    <div class="demos">
+      <div class="demo">
+        <h3>How RAG picks its context</h3>
+        <p class="note">Ask a support question. The page scores six help-centre chunks against it, keeps the top two and writes a cited answer. Real systems use dense embeddings; this uses TF-IDF so you can see the scores.</p>
+        <div>
+          <label for="ragQ">Question</label>
+          <input id="ragQ" type="text" value="How long do refunds take to reach my card?">
+        </div>
+        <div class="chips" id="ragChips"></div>
+        <div class="hits" id="ragHits"></div>
+        <div class="answer" id="ragAns"></div>
+      </div>
+      <div class="demo">
+        <h3>What a model actually reads</h3>
+        <p class="note">Type anything to see it split into tokens. Models bill and reason in tokens, not words. This is a rough BPE-style approximation, so counts are close to, not equal to, a real tokenizer.</p>
+        <div>
+          <label for="tokIn">Text</label>
+          <textarea id="tokIn">Customer #1042 asked: "Where's my refund?" It's been 6 days since I cancelled.</textarea>
+        </div>
+        <div class="toks" id="tokOut" aria-live="polite"></div>
+        <div class="tokstats" id="tokStats"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="span"><b>span</b> experience · most recent first</div>
+    <h2>Experience</h2>
+    <p class="lede">Five-plus years across product companies and client delivery.</p>
+    <ol class="timeline">
+      <li>
+        <div class="when"><span class="ph">[start]</span> – now</div>
+        <div><h3><span class="ph">[Your title]</span></h3><p class="org">Evonence</p><p>Lead backend engineer on CostCures. Also built on a genomics pathogen-surveillance platform and added GenAI code review to CI/CD. Daily Claude Code user, including MCP connectors for Jira worklog automation.</p></div>
+      </li>
+      <li>
+        <div class="when"><span class="ph">[start] – [end]</span></div>
+        <div><h3><span class="ph">[Your title]</span></h3><p class="org">Fatakpay</p><p>Led a team of 10+ on a digital lending platform serving 500K+ users: loan origination, CRM, underwriting integrations, OCR and liveness checks for KYC.</p></div>
+      </li>
+      <li>
+        <div class="when"><span class="ph">[start] – [end]</span></div>
+        <div><h3><span class="ph">[Your title]</span></h3><p class="org"><span class="ph">[Company]</span></p><p>Built payment-driven SaaS products serving 2,000+ subscribers.</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="span"><b>span</b> skills · full stack + AI</div>
+    <h2>Skills</h2>
+    <p class="lede">Strong full-stack and cloud foundations, with an AI layer I'm actively building on top.</p>
+    <div class="skills">
+      <div><h3>AI engineering</h3><ul>
+        <li>LLM APIs (Gemini, Claude, Ollama)</li><li>Prompt engineering</li><li>Structured output</li><li>Embeddings and vector search</li><li>Pinecone</li><li class="b">pgvector</li><li class="b">RAG pipelines</li><li class="b">Agents and tool calling</li><li class="b">LangGraph</li><li class="b">MCP servers</li><li class="b">Evals and LLM-as-judge</li><li class="b">Guardrails</li><li class="b">Langfuse tracing</li>
+      </ul></div>
+      <div><h3>ML and data in production</h3><ul>
+        <li>Vertex AI / Gemini</li><li>ML pipelines on GKE</li><li>Snakemake</li><li>OCR and face liveness</li><li>CLIP / ResNet embeddings</li><li>Bulk data pipelines</li><li>Web scraping and enrichment</li>
+      </ul></div>
+      <div><h3>Backend</h3><ul>
+        <li>Python</li><li>Django and DRF</li><li>FastAPI</li><li>Flask</li><li>Node.js</li><li>REST API design</li><li>PostgreSQL</li><li>Redis</li><li>Payments (Authorize.Net)</li><li>RBAC and API security</li>
+      </ul></div>
+      <div><h3>Frontend</h3><ul>
+        <li>React</li><li>Next.js</li><li>Angular</li><li>Vue</li><li>TypeScript</li><li>JavaScript</li>
+      </ul></div>
+      <div><h3>Google Cloud</h3><ul>
+        <li>Cloud Run and Cloud Run Jobs</li><li>Pub/Sub</li><li>Cloud SQL</li><li>GKE</li><li>Cloud Build</li><li>Cloud Storage</li><li>Secret Manager</li><li>IAM</li><li>Firebase Auth</li>
+      </ul></div>
+      <div><h3>DevOps and daily tools</h3><ul>
+        <li>Docker</li><li>Kubernetes</li><li>CI/CD</li><li>GitHub Actions</li><li>Git</li><li>Claude Code</li><li>Jira (via MCP)</li>
+      </ul></div>
+    </div>
+    <p class="legend"><span>· building</span> marks skills I'm learning through SupportPilot right now.</p>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:0">
+  <div class="wrap contact">
+    <div>
+      <div class="span"><b>span</b> contact · end of trace</div>
+      <h2>Let's build something that ships.</h2>
+      <p class="lede" style="margin:14px 0 0">I'm looking for AI Engineer and senior full-stack roles where LLM features go to production. Remote or on-site.</p>
+    </div>
+    <div class="cards">
+      <div class="cline"><span>email</span><code class="ph">you@example.com</code></div>
+      <div class="cline"><span>linkedin</span><code class="ph">linkedin.com/in/your-handle</code></div>
+      <div class="cline"><span>github</span><a href="https://github.com/ajmalmansuri02" target="_blank" rel="noopener">github.com/ajmalmansuri02</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Ajmal Mansuri</span><span>static html · no trackers</span></div></footer>
+
+<script>
+(function(){
+  /* theme toggle: auto → light → dark */
+  var btn=document.getElementById('themeBtn'),root=document.documentElement,modes=['auto','light','dark'];
+  function apply(m){if(m==='auto')root.removeAttribute('data-theme');else root.setAttribute('data-theme',m);btn.textContent='theme: '+m;}
+  var saved='auto';try{saved=localStorage.getItem('theme')||'auto';}catch(e){}
+  apply(saved);
+  btn.addEventListener('click',function(){var cur=root.getAttribute('data-theme')||'auto';var next=modes[(modes.indexOf(cur)+1)%3];apply(next);try{localStorage.setItem('theme',next);}catch(e){}});
+
+  /* agent trace */
+  var scenarios={
+    'Order status':{ms:1840,tok:912,steps:[
+      ['user','Where is my order #1042? It was supposed to arrive Monday.'],
+      ['plan','Needs live order data. Call get_order, then answer with the tracking status.'],
+      ['tool','get_order({"order_id": "1042"})'],
+      ['obs','{"status": "in_transit", "carrier": "BlueDart", "eta": "2026-10-09"}'],
+      ['answer','Your order #1042 is on its way with BlueDart and should arrive on 9 October. Sorry it\'s running late.']]},
+    'Refund policy':{ms:1310,tok:1204,steps:[
+      ['user','Can I get a refund on an annual plan after 20 days?'],
+      ['plan','Policy question. Retrieve from the knowledge base, answer only from what is found.'],
+      ['tool','search_kb({"query": "annual plan refund window", "k": 3})'],
+      ['obs','[1] refunds.md §2 (score 0.82)  [2] billing.md §4 (0.61)'],
+      ['answer','Yes. Annual plans can be refunded in full within 30 days of purchase, so you\'re still inside the window. [1]']]},
+    'Escalation':{ms:2210,tok:1530,steps:[
+      ['user','I was charged twice and nobody is answering my emails. This is ridiculous.'],
+      ['plan','Billing dispute plus frustrated customer. Confidence is low for a self-serve fix. Open a ticket and hand off.'],
+      ['tool','create_ticket({"priority": "high", "category": "double_charge"})'],
+      ['obs','{"ticket_id": "SP-3318", "assigned": "billing-team"}'],
+      ['answer','I\'m sorry about that. I\'ve opened ticket SP-3318 with our billing team as high priority, and a person will reply to you directly.']]}
+  };
+  var sel=document.getElementById('scenario'),list=document.getElementById('traceList'),meta=document.getElementById('traceMeta'),timer=null;
+  Object.keys(scenarios).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=k;sel.appendChild(o);});
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  function render(name,animate){
+    clearInterval(timer);var sc=scenarios[name];list.innerHTML='';
+    sc.steps.forEach(function(s){
+      var li=document.createElement('li');var body=(s[0]==='tool'||s[0]==='obs')?'<pre>'+esc(s[1])+'</pre>':'<div>'+esc(s[1])+'</div>';
+      li.innerHTML='<span class="kind k-'+s[0]+'">'+({user:'user',plan:'reason',tool:'tool call',obs:'result',answer:'answer'})[s[0]]+'</span><div style="min-width:0">'+body+'</div>';
+      if(animate)li.className='pending';list.appendChild(li);
+    });
+    meta.textContent=sc.steps.length+' spans · '+sc.tok.toLocaleString()+' tokens · '+(sc.ms/1000).toFixed(2)+'s';
+    if(animate){var i=0,items=list.children;timer=setInterval(function(){if(i<items.length){items[i].className='';i++;}else clearInterval(timer);},650);}
+  }
+  sel.addEventListener('change',function(){render(sel.value,true);});
+  document.getElementById('replay').addEventListener('click',function(){render(sel.value,true);});
+  render(sel.value,false);
+
+  /* RAG demo */
+  var docs=[
+    'Refunds are issued to the original payment method. Card refunds take 5 to 7 business days to appear after approval.',
+    'Annual plans can be refunded in full within 30 days of purchase. Monthly plans are not refundable after renewal.',
+    'Standard shipping takes 3 to 5 business days. Express shipping arrives in 1 to 2 days and costs extra.',
+    'To reset your password, choose Forgot password on the sign-in page and follow the link we email you.',
+    'You can cancel your subscription anytime from Settings, Billing. Access continues until the end of the period.',
+    'If you were charged twice, contact billing support with both transaction IDs and we will reverse the duplicate.'
+  ];
+  var titles=['refunds.md §1','refunds.md §2','shipping.md §1','account.md §3','billing.md §4','billing.md §6'];
+  var stop={the:1,a:1,an:1,to:1,of:1,and:1,is:1,are:1,my:1,i:1,do:1,does:1,how:1,what:1,in:1,on:1,for:1,you:1,your:1,we:1,it:1,can:1,be:1,after:1,from:1,with:1,if:1,until:1,not:1,will:1,our:1,us:1,me:1};
+  function tok(s){return s.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(function(w){return w&&!stop[w];}).map(function(w){return w.replace(/(ing|ed|es|s)$/,'');});}
+  var dtoks=docs.map(tok),df={};
+  dtoks.forEach(function(t){Object.keys(t.reduce(function(m,w){m[w]=1;return m;},{})).forEach(function(w){df[w]=(df[w]||0)+1;});});
+  function vec(t){var v={};t.forEach(function(w){v[w]=(v[w]||0)+1;});Object.keys(v).forEach(function(w){v[w]*=Math.log((docs.length+1)/((df[w]||0)+1))+1;});return v;}
+  function cos(a,b){var d=0,na=0,nb=0,k;for(k in a){na+=a[k]*a[k];if(b[k])d+=a[k]*b[k];}for(k in b)nb+=b[k]*b[k];return na&&nb?d/Math.sqrt(na*nb):0;}
+  var dvec=dtoks.map(vec);
+  var qIn=document.getElementById('ragQ'),hits=document.getElementById('ragHits'),ans=document.getElementById('ragAns');
+  function rag(){
+    var q=vec(tok(qIn.value));var scored=dvec.map(function(v,i){return{i:i,s:cos(q,v)};}).sort(function(a,b){return b.s-a.s;});
+    hits.innerHTML='';
+    scored.slice(0,4).forEach(function(h,r){
+      var d=document.createElement('div');d.className='hit'+(r<2&&h.s>0.05?' top':'');
+      d.innerHTML='<span class="n">'+(r<2&&h.s>0.05?'['+(r+1)+']':'—')+'</span><div style="min-width:0"><span class="mono" style="font-size:12px;color:var(--muted)">'+titles[h.i]+'</span><div>'+esc(docs[h.i])+'</div><div class="bar"><i style="width:'+Math.round(h.s*100)+'%"></i></div></div><span class="s">'+h.s.toFixed(2)+'</span>';
+      hits.appendChild(d);
+    });
+    var top=scored.slice(0,2).filter(function(h){return h.s>0.05;});
+    if(!top.length){ans.innerHTML='<strong>Answer:</strong> I couldn\'t find that in the help centre, so I\'d hand this to a human agent rather than guess.';return;}
+    ans.innerHTML='<strong>Answer:</strong> '+top.map(function(h,r){return esc(docs[h.i])+' <span class="cite">['+(r+1)+']</span>';}).join(' ');
+  }
+  var chips=['How long do refunds take to reach my card?','Can I cancel my annual plan?','I was charged twice','How do I reset my password?','Do you sell gift cards?'];
+  var cbox=document.getElementById('ragChips');
+  chips.forEach(function(c){var b=document.createElement('button');b.type='button';b.textContent=c;b.addEventListener('click',function(){qIn.value=c;rag();});cbox.appendChild(b);});
+  qIn.addEventListener('input',rag);rag();
+
+  /* tokenizer demo */
+  var common={' the':1,' my':1,' it':1,' is':1,' to':1,' and':1,' you':1,' been':1,' since':1,' days':1,' asked':1,' where':1,' order':1,' refund':1,' customer':1,'Customer':1,' I':1,' a':1,' of':1,' for':1,' in':1,' on':1,' with':1,' this':1,' that':1,' what':1,' your':1,' can':1,' how':1,' was':1,' not':1,' are':1};
+  var tin=document.getElementById('tokIn'),tout=document.getElementById('tokOut'),tstats=document.getElementById('tokStats');
+  var hues=['--accent','--ok','--warn','--tool'];
+  function split(text){
+    var pre=text.match(/'s|'t|'re|'ve|'m|'ll|'d| ?[A-Za-z]+| ?[0-9]{1,3}| ?[^\sA-Za-z0-9]+|\s+(?!\S)|\s+/g)||[];
+    var out=[];
+    pre.forEach(function(p){
+      if(p.length<=5||common[p]||common[' '+p.trim().toLowerCase()]){out.push(p);return;}
+      var i=0;while(i<p.length){var n=(i===0&&p[0]===' ')?5:4;out.push(p.slice(i,i+n));i+=n;}
+    });
+    return out;
+  }
+  function tokRender(){
+    var t=split(tin.value);tout.innerHTML='';
+    t.forEach(function(s,i){var sp=document.createElement('span');sp.textContent=s.replace(/ /g,'·');sp.style.background='color-mix(in srgb,var('+hues[i%4]+') 18%,transparent)';sp.title='token '+(i+1);tout.appendChild(sp);});
+    var words=(tin.value.trim().match(/\S+/g)||[]).length;
+    tstats.innerHTML='<span><b>'+t.length+'</b> tokens</span><span><b>'+words+'</b> words</span><span><b>'+tin.value.length+'</b> chars</span><span>≈ <b>'+(words?(t.length/words).toFixed(2):'0')+'</b> tokens/word</span>';
+  }
+  tin.addEventListener('input',tokRender);tokRender();
+})();
+</script>
+</body>
+</html>
