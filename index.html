@@ -261,6 +261,12 @@ section{border-bottom:1.5px dashed var(--line)}
 .contact h2{font-size:clamp(36px,5.4vw,58px)}
 footer{font:600 19px var(--hand)}
 @media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.polaroid{width:min(78%,280px)}}
+.labs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.lab{display:flex;flex-direction:column;gap:8px;align-items:flex-start;background:var(--surface);border:1.5px solid var(--ink);border-radius:var(--radius);box-shadow:4px 4px 0 var(--line);padding:20px;color:var(--ink);text-decoration:none;min-width:0;transition:transform .15s,box-shadow .15s}
+.lab:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--line)}
+.lab h3{font:600 17px var(--mono);overflow-wrap:anywhere}
+.lab p{font-size:16px;color:var(--muted)}
+.labstack{font:12px var(--mono);color:var(--muted);margin-top:auto}
 </style>
 </head>
 <body>
@@ -269,6 +275,7 @@ footer{font:600 19px var(--hand)}
   <div class="wrap">
     <a class="brand" href="#top">ajmal<span>.</span>dev</a>
     <a class="l" href="#work">Work</a>
+    <a class="l" href="#labs">Labs</a>
     <a class="l" href="#demos">Demos</a>
     <a class="l" href="#experience">Experience</a>
     <a class="l" href="#skills">Skills</a>
@@ -460,6 +467,46 @@ footer{font:600 19px var(--hand)}
           <div class="stack"><span>Python</span><span>Django</span><span>Angular</span><span>TypeScript</span><span>Razorpay</span><span>Slack webhooks</span></div>
         </details>
       </article>
+    </div>
+  </div>
+</section>
+
+<section id="labs">
+  <div class="wrap">
+    <div class="span">// open-source learning labs</div>
+    <h2>Things I'm <mark>learning in public</mark></h2>
+    <p class="lede">Small, tested repos where I work through one AI engineering or infrastructure idea at a time. Everything runs locally for free.</p>
+    <div class="labs">
+      <a class="lab" href="https://github.com/ajmalmansuri02/rag-eval-lab" target="_blank" rel="noopener">
+        <span class="pill ai">AI</span>
+        <h3>rag-eval-lab</h3>
+        <p>Compares chunking, embeddings and dense, BM25 and hybrid retrieval on a golden Q&amp;A set, scored by recall@k, MRR and an LLM judge.</p>
+        <span class="labstack">Python · numpy · Ollama · Gemini</span>
+      </a>
+      <a class="lab" href="https://github.com/ajmalmansuri02/mcp-servers" target="_blank" rel="noopener">
+        <span class="pill ai">AI</span>
+        <h3>mcp-servers</h3>
+        <p>Three Model Context Protocol servers (read-only Postgres, notes search, GitHub issues) with layered safety guards and tests.</p>
+        <span class="labstack">Python · MCP SDK · Postgres</span>
+      </a>
+      <a class="lab" href="https://github.com/ajmalmansuri02/doc-extract-ai" target="_blank" rel="noopener">
+        <span class="pill ai">AI</span>
+        <h3>doc-extract-ai</h3>
+        <p>Extracts invoices, receipts and KYC forms into validated schemas, retries on validation errors and checks PAN and GSTIN.</p>
+        <span class="labstack">FastAPI · Pydantic · Ollama</span>
+      </a>
+      <a class="lab" href="https://github.com/ajmalmansuri02/llm-gateway" target="_blank" rel="noopener">
+        <span class="pill">Infra</span>
+        <h3>llm-gateway</h3>
+        <p>OpenAI-compatible gateway with routing, fallback, Redis rate limits and caching, cost tracking, Prometheus and OpenTelemetry.</p>
+        <span class="labstack">FastAPI · Redis · Grafana · k6</span>
+      </a>
+      <a class="lab" href="https://github.com/ajmalmansuri02/llm-serving-k8s" target="_blank" rel="noopener">
+        <span class="pill">Infra</span>
+        <h3>llm-serving-k8s</h3>
+        <p>Serves a local model on Kubernetes with Helm, autoscaling on in-flight requests, dashboards, k6 load tests and Terraform for GKE.</p>
+        <span class="labstack">Helm · kind · Prometheus · Terraform</span>
+      </a>
     </div>
   </div>
 </section>
