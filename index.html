@@ -267,6 +267,7 @@ footer{font:600 19px var(--hand)}
 .lab h3{font:600 17px var(--mono);overflow-wrap:anywhere}
 .lab p{font-size:16px;color:var(--muted)}
 .labstack{font:12px var(--mono);color:var(--muted);margin-top:auto}
+.timeline .lead{font:600 20px var(--hand);color:var(--pen);margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -290,7 +291,7 @@ footer{font:600 19px var(--hand)}
       <span class="hello">// hi, i'm ajmal mansuri</span>
       <h1>I build <mark>backends</mark> that scale, and <mark>AI</mark> that <em>actually ships</em><span class="dot">.</span></h1>
       <p class="role">Senior software engineer, moving into AI engineering</p>
-      <p class="bio">Six years of shipping backend-heavy platforms across <strong>healthtech, fintech and bioinformatics</strong> on <strong>Google Cloud</strong>. Right now I lead backend engineering for <strong>CostCures</strong> at Evonence, and I've built <strong>SupportPilot</strong>, an AI support agent with RAG, tool calling, MCP and evals.</p>
+      <p class="bio">Six years building backend platforms for <strong>healthtech, fintech and bioinformatics</strong> on <strong>Google Cloud</strong>. I lead backend for <strong>CostCures</strong> at Evonence and built <strong>SupportPilot</strong>, an AI support agent.</p>
       <span class="status">✓ open to AI Engineer roles · South Mumbai, Maharashtra</span>
       <div class="links">
         <a class="btn primary" href="#work">See my work</a>
@@ -313,38 +314,23 @@ footer{font:600 19px var(--hand)}
 </header>
 
 <main>
-<section id="now">
-  <div class="wrap">
-    <div class="span">// what i'm focused on</div>
-    <h2>Where my <mark>attention</mark> is</h2>
-    <p class="lede">Six years of backend and cloud work are a solid base for AI engineering. These are the four things I'm putting hours into this quarter.</p>
-    <div class="now">
-      <div><span class="tag">Build</span><h3>SupportPilot</h3><p>An AI customer-support agent, built in public over 12 weeks: FastAPI, Next.js, LangGraph, pgvector and an MCP ticketing server.</p></div>
-      <div><span class="tag">Measure</span><h3>Eval-driven development</h3><p>Golden datasets, LLM-as-judge and retrieval metrics in CI, so a prompt change has to prove it helped before it ships.</p></div>
-      <div><span class="tag">Connect</span><h3>Agents and MCP</h3><p>Tool calling, routing and Model Context Protocol servers. I already use MCP connectors with Claude Code in my daily work.</p></div>
-      <div><span class="tag">Ship</span><h3>Production on GCP</h3><p>Cost, latency, guardrails and tracing. Taking what I know about Cloud Run and Pub/Sub into LLM serving.</p></div>
-    </div>
-  </div>
-</section>
-
 <section id="work">
   <div class="wrap">
     <div class="span">// selected projects</div>
     <h2>Selected <mark>work</mark></h2>
-    <p class="lede">Production systems I've built or led, plus the AI work I'm doing now. Open any project for the details.</p>
+    <p class="lede">Production work and AI builds. Open a card for details.</p>
 
     <div class="projects">
       <article class="proj">
         <div>
           <div class="meta"><span>Evonence</span><span>·</span><span>Current</span><span class="pill">Healthtech</span></div>
           <h3>CostCures: healthcare price transparency</h3>
-          <p class="sum">I lead backend engineering for a platform where patients compare real prices for medical services and providers enrol, publish pricing and get paid. I own the Django and PostgreSQL API, payments, data pipelines and the path from dev to production.</p>
+          <p class="sum">Lead backend for a healthcare price-transparency platform: Django API, payments, data pipelines and releases on GCP.</p>
         </div>
         <ul class="impact">
           <li><b>OOM → 0</b>Bulk pricing uploads moved from Pub/Sub workers to Cloud Run Jobs</li>
           <li><b>238</b>scraped facilities verified against Google Places</li>
-          <li><b>Dev → UAT → Prod</b>Environment promotion and go-live checklist</li>
-        </ul>
+                  </ul>
         <details>
           <summary>Show the details</summary>
           <ul>
@@ -363,12 +349,11 @@ footer{font:600 19px var(--hand)}
         <div>
           <div class="meta"><span>Personal</span><span>·</span><span>2026</span><span class="pill ai">AI</span><span class="pill">Open source</span></div>
           <h3>SupportPilot: AI customer-support agent</h3>
-          <p class="sum">A support agent that answers from a knowledge base with citations, looks up orders and opens tickets through tools, and hands off to a human when it isn't sure. Built in five phases, with RAG, agent and red-team evals gating every pull request.</p>
+          <p class="sum">Answers from docs with citations, calls tools, and hands off to a human when unsure. Evals gate every PR.</p>
         </div>
         <ul class="impact">
           <li><b>RAG</b>pgvector retrieval with cited answers</li>
           <li><b>Agents</b>LangGraph tool calling and an MCP ticket server</li>
-          <li><b>Evals</b>Retrieval and answer-quality checks on every PR</li>
         </ul>
         <details>
           <summary>Show the details</summary>
@@ -389,7 +374,7 @@ footer{font:600 19px var(--hand)}
         <div>
           <div class="meta"><span>Evonence</span><span>·</span><span>2025</span><span class="pill ai">ML platform</span><span class="pill">Bioinformatics</span></div>
           <h3>Genomics pathogen-surveillance platform</h3>
-          <p class="sum">Backend and workflow-orchestration engineer on a SaaS platform whose pipelines run ML-based antimicrobial-resistance prediction on genome sequence data.</p>
+          <p class="sum">Django API and Node.js workflow service running ML resistance-prediction pipelines on GKE.</p>
         </div>
         <ul class="impact">
           <li><b>Django + Node.js</b>API plus a workflow-manager microservice</li>
@@ -410,7 +395,7 @@ footer{font:600 19px var(--hand)}
         <div>
           <div class="meta"><span>Evonence</span><span>·</span><span>2025</span><span class="pill ai">GenAI</span></div>
           <h3>GenAI code review in CI/CD</h3>
-          <p class="sum">Wired Google's Gemini-based DevAI review tool into the CostCures pipeline, so every change gets an automated security, performance and quality review before a human looks at it.</p>
+          <p class="sum">Gemini on Vertex AI reviews every change for security, performance and quality.</p>
         </div>
         <ul class="impact">
           <li><b>Every PR</b>reviewed by Vertex AI / Gemini</li>
@@ -429,7 +414,7 @@ footer{font:600 19px var(--hand)}
         <div>
           <div class="meta"><span>Codezen · Fatakpay</span><span>·</span><span>2022–2023</span><span class="pill">Fintech</span><span class="pill ai">Computer vision</span></div>
           <h3>Digital lending platform</h3>
-          <p class="sum">Led a cross-functional team that built a lending platform from scratch: onboarding, a loan management service, CRM and partner panels, with real-time OCR and liveness face detection for KYC.</p>
+          <p class="sum">Led the team that built onboarding, loans, CRM and KYC with OCR and liveness checks.</p>
         </div>
         <ul class="impact">
           <li><b>500K+</b>users served</li>
@@ -452,7 +437,7 @@ footer{font:600 19px var(--hand)}
         <div>
           <div class="meta"><span>Codezen · Only Graphics</span><span>·</span><span>2024</span><span class="pill">SaaS</span></div>
           <h3>Campaign poster platform</h3>
-          <p class="sum">Architected the backend for a subscription product where political parties and businesses create campaign posters from templates and frames.</p>
+          <p class="sum">Subscription SaaS for political and business campaign posters, with Razorpay billing.</p>
         </div>
         <ul class="impact">
           <li><b>2,000+</b>active users</li>
@@ -475,7 +460,7 @@ footer{font:600 19px var(--hand)}
   <div class="wrap">
     <div class="span">// open-source learning labs</div>
     <h2>Things I'm <mark>learning in public</mark></h2>
-    <p class="lede">Small, tested repos where I work through one AI engineering or infrastructure idea at a time. Everything runs locally for free.</p>
+    <p class="lede">One AI or infra idea per repo, tested and runnable for free.</p>
     <div class="labs">
       <a class="lab" href="https://github.com/ajmalmansuri02/rag-eval-lab" target="_blank" rel="noopener">
         <span class="pill ai">AI</span>
@@ -515,7 +500,7 @@ footer{font:600 19px var(--hand)}
   <div class="wrap">
     <div class="span">// try it in the browser</div>
     <h2>Small demos of <em>big ideas</em></h2>
-    <p class="lede">Two pieces of the LLM stack you can poke at right here. Both run entirely in your browser with simplified maths, so they show the mechanics without calling a model.</p>
+    <p class="lede">Three pieces of the LLM stack, running in your browser.</p>
     <div class="demos">
       <div class="demo wide">
         <h3>Watch an agent think</h3>
@@ -562,19 +547,19 @@ footer{font:600 19px var(--hand)}
   <div class="wrap">
     <div class="span">// most recent first</div>
     <h2>Where I've <mark>worked</mark></h2>
-    <p class="lede">Six-plus years across healthtech, fintech, logistics and SaaS.</p>
+    <p class="lede">I lead teams across locations and visit sites in person to fast-track delivery under my supervision.</p>
     <ol class="timeline">
       <li>
         <div class="when">Apr 2024 – now</div>
-        <div><h3>Senior Software Engineer</h3><p class="org">Evonence · Mumbai</p><p>Lead backend engineer on CostCures. Also built on a genomics pathogen-surveillance platform and added GenAI code review to CI/CD. Daily Claude Code user, including MCP connectors for Jira worklog automation.</p></div>
+        <div><h3>Senior Software Engineer</h3><p class="org">Evonence · Mumbai</p><p>Lead backend for CostCures. Built on a genomics ML platform and added Gemini code review to CI/CD.</p></div>
       </li>
       <li>
         <div class="when">Oct 2021 – Mar 2024</div>
-        <div><h3>Senior Software Engineer</h3><p class="org">Codezen Tech Solutions · Mumbai</p><p>Led a team of 10+ on Fatakpay, a lending platform serving 500K+ users. Architected Only Graphics, a poster SaaS with 2,000+ active users, and BioMech, a pharmaceutical inventory system with compliance tracking, audit trails and reporting.</p></div>
+        <div><h3>Senior Software Engineer</h3><p class="org">Codezen Tech Solutions · Mumbai</p><p class="lead">Team of 10+ · Reported to the Founder &amp; CEO · Managed delivery across locations</p><p>Led Fatakpay (500K+ users), Only Graphics (2,000+ users) and BioMech.</p></div>
       </li>
       <li>
         <div class="when">Mar 2020 – Oct 2021</div>
-        <div><h3>Software Developer</h3><p class="org">InfoMover Technologies · Vadodara</p><p>Designed the front-end architecture for logistics booking products, built multi-option vessel booking forms, and integrated REST and third-party APIs.</p></div>
+        <div><h3>Software Developer</h3><p class="org">InfoMover Technologies · Vadodara</p><p class="lead">Reported to the CEO &amp; Founder</p><p>Front-end architecture and booking forms for logistics products.</p></div>
       </li>
       <li>
         <div class="when">2016 – 2020</div>
@@ -588,7 +573,7 @@ footer{font:600 19px var(--hand)}
   <div class="wrap">
     <div class="span">// full stack + ai</div>
     <h2>What I <mark>work with</mark></h2>
-    <p class="lede">Strong full-stack and cloud foundations, with an AI layer I'm actively building on top.</p>
+    <p class="lede">Full stack and cloud, with an AI layer on top.</p>
     <div class="skills">
       <div><h3>AI engineering</h3><ul>
         <li>LLM APIs (Gemini, Claude, Ollama)</li><li>Prompt engineering</li><li>Structured output</li><li>Embeddings and vector search</li><li>Pinecone</li><li class="b">pgvector</li><li class="b">RAG pipelines</li><li class="b">Agents and tool calling</li><li class="b">LangGraph</li><li class="b">MCP servers</li><li class="b">Evals and LLM-as-judge</li><li class="b">Guardrails</li><li class="b">Langfuse tracing</li>
@@ -618,7 +603,7 @@ footer{font:600 19px var(--hand)}
     <div>
       <div class="span">// end of trace</div>
       <h2>Let's build something that <em>ships</em>.</h2>
-      <p class="lede" style="margin:14px 0 0">I'm looking for AI Engineer and senior full-stack roles where LLM features go to production. Based in South Mumbai. Open to remote, hybrid or relocation.</p>
+      <p class="lede" style="margin:14px 0 0">Open to AI Engineer and senior full-stack roles. South Mumbai, open to remote, hybrid or relocation.</p>
     </div>
     <div class="cards">
       <div class="cline"><span>email</span><code>ajmalmansuri91@gmail.com</code></div>
