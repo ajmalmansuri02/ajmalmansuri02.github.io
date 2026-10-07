@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Ajmal Mansuri: full-stack engineer moving into AI engineering. Python, Django, FastAPI, React, Google Cloud, RAG and agents.">
+<meta name="description" content="Ajmal Mansuri: senior full-stack engineer moving into AI engineering. Python, Django, FastAPI, React, Google Cloud, RAG and agents. South Mumbai, India.">
 <title>Ajmal Mansuri · Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,8 +83,9 @@ h2{font-size:clamp(28px,4vw,40px);font-weight:700;margin-bottom:12px;letter-spac
 .btn{display:inline-flex;align-items:center;gap:8px;font:500 14px var(--body);padding:9px 16px;border-radius:8px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
 .btn:hover{border-color:var(--accent)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:20px 24px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 24px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
 .stats div{min-width:0}
+@media (max-width:520px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .stats b{display:block;font:700 26px var(--display);font-variant-numeric:tabular-nums}
 .stats span{font-size:13px;color:var(--muted)}
 
@@ -205,21 +206,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <header class="hero" id="top">
   <div class="wrap">
     <div>
-      <span class="status"><i></i>Open to AI Engineer roles</span>
+      <span class="status"><i></i>Open to AI Engineer roles · South Mumbai, Maharashtra</span>
       <h1>Ajmal Mansuri</h1>
       <p class="role">Full-stack engineer <span class="arrow">→</span> AI engineer</p>
       <p class="bio">I build backend-heavy platforms across <strong>healthtech, fintech and bioinformatics</strong>: API architecture, payment systems, data pipelines and ML-backed services on <strong>Google Cloud</strong>. Right now I lead backend engineering for CostCures, and I'm building <strong>SupportPilot</strong>, an AI support agent with RAG, tool calling and evals.</p>
       <div class="links">
         <a class="btn primary" href="#work">See my work</a>
         <a class="btn" href="https://github.com/ajmalmansuri02" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="#contact">LinkedIn</a>
-        <a class="btn" href="#contact">Résumé</a>
+        <a class="btn" href="https://www.linkedin.com/in/mohd-ajmal-mansuri-9019ab14a" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="mailto:ajmalmansuri91@gmail.com">Email me</a>
       </div>
       <div class="stats">
-        <div><b>5+</b><span>years shipping</span></div>
+        <div><b>6+</b><span>years shipping</span></div>
         <div><b>500K+</b><span>users on a lending platform</span></div>
         <div><b>10+</b><span>engineers led</span></div>
-        <div><b>GCP</b><span>Cloud Run · Pub/Sub · Vertex AI</span></div>
+        <div><b>80+</b><span>Google Cloud services used</span></div>
       </div>
     </div>
 
@@ -243,7 +244,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="wrap">
     <div class="span"><b>span</b> now · what I'm focused on</div>
     <h2>Where my attention is</h2>
-    <p class="lede">Five years of backend and cloud work are a solid base for AI engineering. These are the four things I'm putting hours into this quarter.</p>
+    <p class="lede">Six years of backend and cloud work are a solid base for AI engineering. These are the four things I'm putting hours into this quarter.</p>
     <div class="now">
       <div><span class="tag">Build</span><h3>SupportPilot</h3><p>An AI customer-support agent, built in public over 12 weeks: FastAPI, Next.js, LangGraph, pgvector and an MCP ticketing server.</p></div>
       <div><span class="tag">Measure</span><h3>Eval-driven development</h3><p>Golden datasets, LLM-as-judge and retrieval metrics in CI, so a prompt change has to prove it helped before it ships.</p></div>
@@ -287,9 +288,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
       <article class="proj">
         <div>
-          <div class="meta"><span>Personal</span><span>·</span><span>2026</span><span class="pill ai">AI</span><span class="pill live">In progress</span></div>
+          <div class="meta"><span>Personal</span><span>·</span><span>2026</span><span class="pill ai">AI</span><span class="pill">Open source</span></div>
           <h3>SupportPilot: AI customer-support agent</h3>
-          <p class="sum">A support agent that answers from a knowledge base with citations, looks up orders and opens tickets through tools, and hands off to a human when it isn't sure. Built phase by phase with evals in CI from week 3.</p>
+          <p class="sum">A support agent that answers from a knowledge base with citations, looks up orders and opens tickets through tools, and hands off to a human when it isn't sure. Built in five phases, with RAG, agent and red-team evals gating every pull request.</p>
         </div>
         <ul class="impact">
           <li><b>RAG</b>pgvector retrieval with cited answers</li>
@@ -299,8 +300,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <details>
           <summary>Show the details</summary>
           <ul>
-            <li>Phase 1 shipped: LLM backend with streaming chat UI, structured output and conversation memory.</li>
-            <li>Next: chunking and embeddings, a golden eval set, LangGraph agent with order-lookup and ticket tools, Langfuse tracing, guardrails and a deployed demo.</li>
+            <li>LLM layer: streaming chat over SSE, a provider switch (Ollama, Gemini, Vertex AI, any OpenAI-compatible API), structured output and conversation memory.</li>
+            <li>RAG: hybrid search over pgvector and Postgres full text with reciprocal rank fusion, reranking and cited answers; it says so when the docs don't cover a question.</li>
+            <li>Agent: LangGraph flow that classifies the request, then calls tools for accounts, refunds and escalation; refunds wait for human approval. Tickets go through an MCP server.</li>
+            <li>Production: input guardrails against prompt injection and data leaks, per-call cost and latency logging, a semantic cache and Langfuse tracing.</li>
+            <li>Fine-tuned a small routing model and added a deploy path to a managed cloud AI platform.</li>
             <li>Runs fully local with Ollama (qwen2.5, nomic-embed-text), with Gemini as an optional hosted model.</li>
           </ul>
           <div class="stack"><span>FastAPI</span><span>Next.js</span><span>LangGraph</span><span>pgvector</span><span>MCP</span><span>Ollama</span><span>Gemini</span><span>Langfuse</span><span>Docker</span></div>
@@ -350,9 +354,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
       <article class="proj">
         <div>
-          <div class="meta"><span class="ph">Fatakpay</span><span>·</span><span class="ph">[years]</span><span class="pill">Fintech</span><span class="pill ai">Computer vision</span></div>
+          <div class="meta"><span>Codezen · Fatakpay</span><span>·</span><span>2022–2023</span><span class="pill">Fintech</span><span class="pill ai">Computer vision</span></div>
           <h3>Digital lending platform</h3>
-          <p class="sum">Led a cross-functional team building loan origination, CRM and underwriting integrations, with real-time OCR and liveness face detection for KYC.</p>
+          <p class="sum">Led a cross-functional team that built a lending platform from scratch: onboarding, a loan management service, CRM and partner panels, with real-time OCR and liveness face detection for KYC.</p>
         </div>
         <ul class="impact">
           <li><b>500K+</b>users served</li>
@@ -361,28 +365,33 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <details>
           <summary>Show the details</summary>
           <ul>
-            <li>Loan origination and CRM flows, plus integrations with underwriting and credit partners.</li>
-            <li>Real-time document OCR and liveness face detection in the KYC flow.</li>
+            <li>Designed the database and REST services, and automated the onboarding and loan journey from application to approval and disbursement.</li>
+            <li>Architected the CRM, LMS and ERP applications and owned the backend infrastructure, with ELK for logging and search.</li>
+            <li>Integrated Razorpay, Tata CRM, Salesforce, UIDAI, ICICI, real-time OCR and liveness face detection.</li>
+            <li>Worked with NBFC partners to keep underwriting rules current as regulations and risk criteria changed.</li>
+            <li>Built DSA, admin, CRM and partner panels with Angular and React teams.</li>
           </ul>
-          <div class="stack"><span>Python</span><span>Node.js</span><span>React</span><span>PostgreSQL</span><span>OCR</span><span>Face liveness</span></div>
+          <div class="stack"><span>Python</span><span>Django</span><span>REST</span><span>JWT</span><span>ELK</span><span>Angular</span><span>React</span><span>React Native</span><span>OCR</span><span>Face liveness</span></div>
         </details>
       </article>
 
       <article class="proj">
         <div>
-          <div class="meta"><span class="ph">[company]</span><span>·</span><span class="ph">[years]</span><span class="pill">SaaS</span></div>
-          <h3>Subscription SaaS products</h3>
-          <p class="sum">Built payment-driven SaaS products end to end, from billing and subscriptions to the customer dashboards.</p>
+          <div class="meta"><span>Codezen · Only Graphics</span><span>·</span><span>2024</span><span class="pill">SaaS</span></div>
+          <h3>Campaign poster platform</h3>
+          <p class="sum">Architected the backend for a subscription product where political parties and businesses create campaign posters from templates and frames.</p>
         </div>
         <ul class="impact">
-          <li><b>2,000+</b>paying subscribers</li>
+          <li><b>2,000+</b>active users</li>
         </ul>
         <details>
           <summary>Show the details</summary>
           <ul>
-            <li>Also contributed to a visual-similarity search service using CLIP and ResNet50 embeddings with Pinecone vector search for product recommendations.</li>
+            <li>Subscription tiers with Razorpay payments and a repayment module with full transaction records.</li>
+            <li>Angular and TypeScript admin panel on a Django backend.</li>
+            <li>Application-wide logging with Slack alerts for runtime errors, and an encrypted header key protecting premium features.</li>
           </ul>
-          <div class="stack"><span>Python</span><span>React</span><span>Payments</span><span>Pinecone</span><span>CLIP</span></div>
+          <div class="stack"><span>Python</span><span>Django</span><span>Angular</span><span>TypeScript</span><span>Razorpay</span><span>Slack webhooks</span></div>
         </details>
       </article>
     </div>
@@ -424,19 +433,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="wrap">
     <div class="span"><b>span</b> experience · most recent first</div>
     <h2>Experience</h2>
-    <p class="lede">Five-plus years across product companies and client delivery.</p>
+    <p class="lede">Six-plus years across healthtech, fintech, logistics and SaaS.</p>
     <ol class="timeline">
       <li>
-        <div class="when"><span class="ph">[start]</span> – now</div>
-        <div><h3><span class="ph">[Your title]</span></h3><p class="org">Evonence</p><p>Lead backend engineer on CostCures. Also built on a genomics pathogen-surveillance platform and added GenAI code review to CI/CD. Daily Claude Code user, including MCP connectors for Jira worklog automation.</p></div>
+        <div class="when">Apr 2024 – now</div>
+        <div><h3>Senior Software Engineer</h3><p class="org">Evonence · Mumbai</p><p>Lead backend engineer on CostCures. Also built on a genomics pathogen-surveillance platform and added GenAI code review to CI/CD. Daily Claude Code user, including MCP connectors for Jira worklog automation.</p></div>
       </li>
       <li>
-        <div class="when"><span class="ph">[start] – [end]</span></div>
-        <div><h3><span class="ph">[Your title]</span></h3><p class="org">Fatakpay</p><p>Led a team of 10+ on a digital lending platform serving 500K+ users: loan origination, CRM, underwriting integrations, OCR and liveness checks for KYC.</p></div>
+        <div class="when">Oct 2021 – Mar 2024</div>
+        <div><h3>Senior Software Engineer</h3><p class="org">Codezen Tech Solutions · Mumbai</p><p>Led a team of 10+ on Fatakpay, a lending platform serving 500K+ users. Architected Only Graphics, a poster SaaS with 2,000+ active users, and BioMech, a pharmaceutical inventory system with compliance tracking, audit trails and reporting.</p></div>
       </li>
       <li>
-        <div class="when"><span class="ph">[start] – [end]</span></div>
-        <div><h3><span class="ph">[Your title]</span></h3><p class="org"><span class="ph">[Company]</span></p><p>Built payment-driven SaaS products serving 2,000+ subscribers.</p></div>
+        <div class="when">Mar 2020 – Oct 2021</div>
+        <div><h3>Software Developer</h3><p class="org">InfoMover Technologies · Vadodara</p><p>Designed the front-end architecture for logistics booking products, built multi-option vessel booking forms, and integrated REST and third-party APIs.</p></div>
+      </li>
+      <li>
+        <div class="when">2016 – 2020</div>
+        <div><h3>B.E. Information Technology</h3><p class="org">Gujarat Technological University · Vadodara</p><p>CGPA 7.5</p></div>
       </li>
     </ol>
   </div>
@@ -452,16 +465,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <li>LLM APIs (Gemini, Claude, Ollama)</li><li>Prompt engineering</li><li>Structured output</li><li>Embeddings and vector search</li><li>Pinecone</li><li class="b">pgvector</li><li class="b">RAG pipelines</li><li class="b">Agents and tool calling</li><li class="b">LangGraph</li><li class="b">MCP servers</li><li class="b">Evals and LLM-as-judge</li><li class="b">Guardrails</li><li class="b">Langfuse tracing</li>
       </ul></div>
       <div><h3>ML and data in production</h3><ul>
-        <li>Vertex AI / Gemini</li><li>ML pipelines on GKE</li><li>Snakemake</li><li>OCR and face liveness</li><li>CLIP / ResNet embeddings</li><li>Bulk data pipelines</li><li>Web scraping and enrichment</li>
+        <li>Vertex AI / Gemini</li><li>ML pipelines on GKE</li><li>Snakemake</li><li>OCR and face liveness</li><li>Elasticsearch and ELK</li><li>Bulk data pipelines</li><li>Web scraping and enrichment</li>
       </ul></div>
       <div><h3>Backend</h3><ul>
-        <li>Python</li><li>Django and DRF</li><li>FastAPI</li><li>Flask</li><li>Node.js</li><li>REST API design</li><li>PostgreSQL</li><li>Redis</li><li>Payments (Authorize.Net)</li><li>RBAC and API security</li>
+        <li>Python</li><li>Django and DRF</li><li>FastAPI</li><li>Flask</li><li>Node.js</li><li>REST API design</li><li>PostgreSQL</li><li>Redis</li><li>Payments (Authorize.Net, Razorpay)</li><li>RBAC and API security</li>
       </ul></div>
       <div><h3>Frontend</h3><ul>
-        <li>React</li><li>Next.js</li><li>Angular</li><li>Vue</li><li>TypeScript</li><li>JavaScript</li>
+        <li>React</li><li>Next.js</li><li>Angular</li><li>Vue</li><li>React Native</li><li>TypeScript</li><li>JavaScript</li>
       </ul></div>
-      <div><h3>Google Cloud</h3><ul>
-        <li>Cloud Run and Cloud Run Jobs</li><li>Pub/Sub</li><li>Cloud SQL</li><li>GKE</li><li>Cloud Build</li><li>Cloud Storage</li><li>Secret Manager</li><li>IAM</li><li>Firebase Auth</li>
+      <div><h3>Google Cloud · 80+ services</h3><ul>
+        <li>Cloud Run and Cloud Run Jobs</li><li>Pub/Sub</li><li>Cloud SQL</li><li>GKE</li><li>Compute Engine</li><li>Cloud Functions</li><li>Cloud Build</li><li>Artifact Registry</li><li>Cloud Storage</li><li>BigQuery</li><li>Cloud Scheduler</li><li>Secret Manager</li><li>IAM</li><li>Cloud Logging and Monitoring</li><li>Vertex AI</li><li>Firebase</li><li>and 60+ more</li>
       </ul></div>
       <div><h3>DevOps and daily tools</h3><ul>
         <li>Docker</li><li>Kubernetes</li><li>CI/CD</li><li>GitHub Actions</li><li>Git</li><li>Claude Code</li><li>Jira (via MCP)</li>
@@ -476,11 +489,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <div>
       <div class="span"><b>span</b> contact · end of trace</div>
       <h2>Let's build something that ships.</h2>
-      <p class="lede" style="margin:14px 0 0">I'm looking for AI Engineer and senior full-stack roles where LLM features go to production. Remote or on-site.</p>
+      <p class="lede" style="margin:14px 0 0">I'm looking for AI Engineer and senior full-stack roles where LLM features go to production. Based in South Mumbai. Open to remote, hybrid or relocation.</p>
     </div>
     <div class="cards">
-      <div class="cline"><span>email</span><code class="ph">you@example.com</code></div>
-      <div class="cline"><span>linkedin</span><code class="ph">linkedin.com/in/your-handle</code></div>
+      <div class="cline"><span>email</span><code>ajmalmansuri91@gmail.com</code></div>
+      <div class="cline"><span>linkedin</span><a href="https://www.linkedin.com/in/mohd-ajmal-mansuri-9019ab14a" target="_blank" rel="noopener">linkedin.com/in/mohd-ajmal-mansuri-9019ab14a</a></div>
+      <div class="cline"><span>location</span><code>South Mumbai, Maharashtra</code></div>
       <div class="cline"><span>github</span><a href="https://github.com/ajmalmansuri02" target="_blank" rel="noopener">github.com/ajmalmansuri02</a></div>
     </div>
   </div>

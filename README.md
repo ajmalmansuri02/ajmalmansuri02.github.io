@@ -6,4 +6,4 @@ Live at https://ajmalmansuri02.github.io
 
 A single static `index.html` with no build step. Edit it and push to `main`; GitHub Pages redeploys automatically.
 
-Placeholders still to fill in are marked with `class="ph"` (shown in amber): job titles, dates, the earlier SaaS company, email and LinkedIn URL.
+Content is drawn from Ajmal's CV and project history.
