@@ -7,36 +7,45 @@
 <title>Ajmal Mansuri · Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Caveat:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a single reading column with a wide hero split (bio | live agent trace); sections are labelled like log spans. */
+/* Layout: an engineer's notebook. Ruled paper with a red margin line, serif headings with highlighter marks, handwritten margin notes; hero is text | taped polaroid. */
 :root{
-  --bg:#f2f4f6;
-  --surface:#ffffff;
-  --sunk:#e7ebef;
-  --ink:#121b24;
-  --muted:#56636f;
-  --line:#d3d9df;
-  --accent:#2747c9;
-  --accent-soft:#e2e7fb;
-  --ok:#17795a;
-  --warn:#a35d00;
-  --tool:#7a3fb8;
-  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
-  --body:"IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --bg:#f6f0e4;
+  --surface:#fffcf5;
+  --sunk:#efe7d6;
+  --ink:#1f1b16;
+  --muted:#5e564b;
+  --line:#e2d7c3;
+  --accent:#c2362f;
+  --accent-soft:#f8e1d9;
+  --hl:#fbe98a;
+  --pen:#2f58a8;
+  --paper-line:#ebe2d0;
+  --margin:#efb5ad;
+  --tape:rgba(246,214,92,.75);
+  --shadow:rgba(80,55,20,.22);
+  --ok:#2e7d4f;
+  --warn:#a8650a;
+  --tool:#7b4bb0;
+  --display:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --body:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --hand:"Caveat", "Segoe Print", "Bradley Hand", cursive;
   --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-  --radius:10px;
+  --radius:6px;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0e141a; --surface:#151d25; --sunk:#1b252f; --ink:#e6ebf0; --muted:#94a2af; --line:#283440;
-    --accent:#8ea4ff; --accent-soft:#1e2a52; --ok:#4fc79c; --warn:#e6a54a; --tool:#c39af0; color-scheme:dark;
+    --bg:#1d1a16; --surface:#27231d; --sunk:#312b23; --ink:#f1e9da; --muted:#b5aa95; --line:#3e372c;
+    --accent:#ff8a73; --accent-soft:#4a2a22; --hl:#6e5c12; --pen:#93b2ff; --paper-line:#262119; --margin:#5c302a;
+    --tape:rgba(214,180,70,.55); --shadow:rgba(0,0,0,.5); --ok:#7fd1a0; --warn:#f0b45a; --tool:#c9a2f2; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0e141a; --surface:#151d25; --sunk:#1b252f; --ink:#e6ebf0; --muted:#94a2af; --line:#283440;
-  --accent:#8ea4ff; --accent-soft:#1e2a52; --ok:#4fc79c; --warn:#e6a54a; --tool:#c39af0; color-scheme:dark;
+  --bg:#1d1a16; --surface:#27231d; --sunk:#312b23; --ink:#f1e9da; --muted:#b5aa95; --line:#3e372c;
+  --accent:#ff8a73; --accent-soft:#4a2a22; --hl:#6e5c12; --pen:#93b2ff; --paper-line:#262119; --margin:#5c302a;
+  --tape:rgba(214,180,70,.55); --shadow:rgba(0,0,0,.5); --ok:#7fd1a0; --warn:#f0b45a; --tool:#c9a2f2; color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -187,6 +196,71 @@ h2{font-size:clamp(28px,4vw,40px);font-weight:700;margin-bottom:12px;letter-spac
 .cline a:hover{color:var(--accent)}
 footer{padding-block:28px;font:12px var(--mono);color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* notebook treatment */
+body{font-size:17.5px;line-height:1.65;background-color:var(--bg);background-image:repeating-linear-gradient(to bottom,transparent 0 31px,var(--paper-line) 31px 32px)}
+body::before{content:"";position:fixed;top:0;bottom:0;left:clamp(8px,2.6vw,34px);width:1.5px;background:var(--margin);pointer-events:none;z-index:0}
+main,header,footer,nav{position:relative;z-index:1}
+mark{background:linear-gradient(transparent 52%,var(--hl) 52%,var(--hl) 92%,transparent 92%);color:inherit;padding:0 .06em}
+h1,h2,h3{font-weight:700;letter-spacing:-.005em}
+h2{font-size:clamp(32px,4.6vw,46px)}
+h2 em,.hero h1 em,.contact h2 em{font-style:italic;font-weight:500;color:var(--accent)}
+.nav{border-bottom:1.5px solid var(--ink);background:color-mix(in srgb,var(--bg) 92%,transparent)}
+.brand{font:italic 600 22px var(--display)}
+.nav a.l{font:400 16px var(--body)}
+.theme{font:500 12px var(--mono);border-color:var(--line)}
+section{border-bottom:1.5px dashed var(--line)}
+.span{font:600 25px/1.1 var(--hand);color:var(--accent);letter-spacing:0;margin-bottom:6px}
+.span::after{display:none}
+.lede{font-size:18px}
+.hero .wrap{grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);align-items:center}
+.hello{font:600 28px var(--hand);color:var(--accent);margin-bottom:6px;display:block}
+.hero h1{font-size:clamp(44px,7.2vw,86px);font-weight:700;letter-spacing:-.015em;line-height:1.02;margin-bottom:22px}
+.hero h1 .dot{color:var(--ink)}
+.role{font:italic 400 clamp(19px,2.2vw,22px)/1.4 var(--display);color:var(--muted)}
+.bio{font-size:18px;max-width:58ch}
+.bio strong{font-weight:700}
+.status{font:600 20px var(--hand);color:var(--ok);border:0;padding:0;margin:0 0 18px}
+.btn{font:600 15px var(--body);border-radius:4px;border:1.5px solid var(--ink);background:transparent;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink);border-color:var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--ink);color:var(--bg)}
+.stats{border-top:1.5px dashed var(--line)}
+.stats b{font:700 32px var(--display)}
+.stats span{font:400 15px var(--body)}
+.polaroid{justify-self:center;position:relative;background:var(--surface);padding:14px 14px 0;width:min(100%,320px);transform:rotate(2.2deg);box-shadow:0 14px 30px -12px var(--shadow),0 2px 4px var(--shadow)}
+.polaroid::before{content:"";position:absolute;top:-14px;left:50%;width:110px;height:28px;background:var(--tape);transform:translateX(-50%) rotate(-2deg)}
+.photo{aspect-ratio:4/5;background:linear-gradient(160deg,var(--accent-soft),var(--sunk));display:grid;place-items:center;font:700 92px var(--display);color:var(--accent);letter-spacing:-.04em}
+.photo .emoji{font-size:clamp(110px,14vw,150px);line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;transform:rotate(-4deg)}
+.polaroid figcaption{font:600 22px/1.25 var(--hand);color:var(--muted);text-align:center;padding:12px 6px 16px}
+.polaroid figcaption span{color:var(--accent)}
+.now{background:transparent;border:0;gap:18px}
+.now div{border:1.5px solid var(--ink);border-radius:var(--radius);box-shadow:4px 4px 0 var(--line)}
+.now .tag{font:600 21px var(--hand);text-transform:none;letter-spacing:0;color:var(--accent);margin-bottom:4px}
+.now h3{font-size:21px}
+.now p{font-size:16px}
+.proj,.demo,.trace,.cline{border:1.5px solid var(--ink);border-radius:var(--radius);box-shadow:5px 5px 0 var(--line)}
+.proj h3{font-size:clamp(24px,2.8vw,30px)}
+.proj .sum{font-size:17px}
+.proj .meta{font:500 12.5px var(--mono)}
+.pill.ai{background:var(--hl);color:var(--ink);border-color:transparent}
+.impact li{border-left:3px solid var(--accent)}
+.impact b{font:700 22px var(--display)}
+.proj summary{font:600 21px var(--hand);color:var(--pen)}
+.proj details ul{font-size:16.5px}
+.demo.wide{grid-column:1/-1;padding:0;border:0;box-shadow:none;background:transparent;gap:10px}
+.demo.wide .trace{max-width:760px}
+.demo h3{font-size:24px}
+.demo .note{font-size:15.5px}
+.answer{font-size:16px}
+.timeline .org{color:var(--accent);font-style:italic}
+.when{font:600 21px var(--hand);color:var(--pen);padding-top:0}
+.skills h3{font:600 23px var(--hand);text-transform:none;letter-spacing:0;color:var(--accent);border-bottom:1.5px dashed var(--line)}
+.skills ul{font-size:16.5px}
+.skills li.b::after{font:600 17px var(--hand)}
+.legend{font:600 19px var(--hand)}
+.contact h2{font-size:clamp(36px,5.4vw,58px)}
+footer{font:600 19px var(--hand)}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.polaroid{width:min(78%,280px)}}
 </style>
 </head>
 <body>
@@ -206,10 +280,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <header class="hero" id="top">
   <div class="wrap">
     <div>
-      <span class="status"><i></i>Open to AI Engineer roles · South Mumbai, Maharashtra</span>
-      <h1>Ajmal Mansuri</h1>
-      <p class="role">Full-stack engineer <span class="arrow">→</span> AI engineer</p>
-      <p class="bio">I build backend-heavy platforms across <strong>healthtech, fintech and bioinformatics</strong>: API architecture, payment systems, data pipelines and ML-backed services on <strong>Google Cloud</strong>. Right now I lead backend engineering for CostCures, and I'm building <strong>SupportPilot</strong>, an AI support agent with RAG, tool calling and evals.</p>
+      <span class="hello">// hi, i'm ajmal mansuri</span>
+      <h1>I build <mark>backends</mark> that scale, and <mark>AI</mark> that <em>actually ships</em><span class="dot">.</span></h1>
+      <p class="role">Senior software engineer, moving into AI engineering</p>
+      <p class="bio">Six years of shipping backend-heavy platforms across <strong>healthtech, fintech and bioinformatics</strong> on <strong>Google Cloud</strong>. Right now I lead backend engineering for <strong>CostCures</strong> at Evonence, and I've built <strong>SupportPilot</strong>, an AI support agent with RAG, tool calling, MCP and evals.</p>
+      <span class="status">✓ open to AI Engineer roles · South Mumbai, Maharashtra</span>
       <div class="links">
         <a class="btn primary" href="#work">See my work</a>
         <a class="btn" href="https://github.com/ajmalmansuri02" target="_blank" rel="noopener">GitHub</a>
@@ -223,27 +298,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <div><b>80+</b><span>Google Cloud services used</span></div>
       </div>
     </div>
-
-    <aside class="trace" aria-label="Example agent trace from SupportPilot">
-      <div class="trace-h">
-        <span>supportpilot · agent trace</span>
-        <div class="trace-ctl">
-          <label for="scenario" class="mono" style="position:absolute;left:-9999px">Scenario</label>
-          <select id="scenario"></select>
-          <button id="replay" type="button">▶ replay</button>
-        </div>
-      </div>
-      <ol id="traceList"></ol>
-      <div class="trace-f"><span id="traceMeta">—</span><span>illustrative trace</span></div>
-    </aside>
+    <figure class="polaroid" style="margin:0">
+      <div class="photo" role="img" aria-label="Placeholder avatar: a technologist emoji"><span class="emoji">🧑‍💻</span></div>
+      <figcaption>that's me. probably <span>shipping</span> something.</figcaption>
+    </figure>
   </div>
 </header>
 
 <main>
 <section id="now">
   <div class="wrap">
-    <div class="span"><b>span</b> now · what I'm focused on</div>
-    <h2>Where my attention is</h2>
+    <div class="span">// what i'm focused on</div>
+    <h2>Where my <mark>attention</mark> is</h2>
     <p class="lede">Six years of backend and cloud work are a solid base for AI engineering. These are the four things I'm putting hours into this quarter.</p>
     <div class="now">
       <div><span class="tag">Build</span><h3>SupportPilot</h3><p>An AI customer-support agent, built in public over 12 weeks: FastAPI, Next.js, LangGraph, pgvector and an MCP ticketing server.</p></div>
@@ -256,8 +322,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section id="work">
   <div class="wrap">
-    <div class="span"><b>span</b> work · selected projects</div>
-    <h2>Selected work</h2>
+    <div class="span">// selected projects</div>
+    <h2>Selected <mark>work</mark></h2>
     <p class="lede">Production systems I've built or led, plus the AI work I'm doing now. Open any project for the details.</p>
 
     <div class="projects">
@@ -400,10 +466,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section id="demos">
   <div class="wrap">
-    <div class="span"><b>span</b> demos · try it in the browser</div>
-    <h2>Small demos of big ideas</h2>
+    <div class="span">// try it in the browser</div>
+    <h2>Small demos of <em>big ideas</em></h2>
     <p class="lede">Two pieces of the LLM stack you can poke at right here. Both run entirely in your browser with simplified maths, so they show the mechanics without calling a model.</p>
     <div class="demos">
+      <div class="demo wide">
+        <h3>Watch an agent think</h3>
+        <p class="note">An illustrative SupportPilot run: the agent reasons, calls a tool, reads the result and answers. Pick a scenario and replay it.</p>
+        <aside class="trace" aria-label="Example agent trace from SupportPilot">
+          <div class="trace-h">
+            <span>supportpilot · agent trace</span>
+            <div class="trace-ctl">
+              <label for="scenario" class="mono" style="position:absolute;left:-9999px">Scenario</label>
+              <select id="scenario"></select>
+              <button id="replay" type="button">▶ replay</button>
+            </div>
+          </div>
+          <ol id="traceList"></ol>
+          <div class="trace-f"><span id="traceMeta">—</span><span>illustrative trace</span></div>
+        </aside>
+      </div>
       <div class="demo">
         <h3>How RAG picks its context</h3>
         <p class="note">Ask a support question. The page scores six help-centre chunks against it, keeps the top two and writes a cited answer. Real systems use dense embeddings; this uses TF-IDF so you can see the scores.</p>
@@ -431,8 +513,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section id="experience">
   <div class="wrap">
-    <div class="span"><b>span</b> experience · most recent first</div>
-    <h2>Experience</h2>
+    <div class="span">// most recent first</div>
+    <h2>Where I've <mark>worked</mark></h2>
     <p class="lede">Six-plus years across healthtech, fintech, logistics and SaaS.</p>
     <ol class="timeline">
       <li>
@@ -457,8 +539,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section id="skills">
   <div class="wrap">
-    <div class="span"><b>span</b> skills · full stack + AI</div>
-    <h2>Skills</h2>
+    <div class="span">// full stack + ai</div>
+    <h2>What I <mark>work with</mark></h2>
     <p class="lede">Strong full-stack and cloud foundations, with an AI layer I'm actively building on top.</p>
     <div class="skills">
       <div><h3>AI engineering</h3><ul>
@@ -487,8 +569,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <section id="contact" style="border-bottom:0">
   <div class="wrap contact">
     <div>
-      <div class="span"><b>span</b> contact · end of trace</div>
-      <h2>Let's build something that ships.</h2>
+      <div class="span">// end of trace</div>
+      <h2>Let's build something that <em>ships</em>.</h2>
       <p class="lede" style="margin:14px 0 0">I'm looking for AI Engineer and senior full-stack roles where LLM features go to production. Based in South Mumbai. Open to remote, hybrid or relocation.</p>
     </div>
     <div class="cards">
